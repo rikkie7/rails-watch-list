@@ -1,0 +1,24 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-film"></i></span>
+    <div class="d-flex">
+      <p class="me-5 align-items-center mb-0"><%=link_to "My List", lists_path, class: "text-decoration-none"%></p>
+      <p class="align-items-center mb-0"><%=link_to "New List", lists_new_path, class: "text-decoration-none"%></p>
+    </div>
+  </div>
+</nav>
+
+<div style="position:relative;">
+<%= image_tag "cinema.jpg", alt: "cinem picture", width: 1800 %>
+<h1 class="text-center" style="position:absolute; top:150px; left: 320px;">Welcome to your personalised movie lists</h1>
+</div>
+
+<div class="container">
+  <h3>Create Your New List!</h3>
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :image_url%>
+    <%= f.submit class: "btn"%>
+  <%end%>
+
+</div>
