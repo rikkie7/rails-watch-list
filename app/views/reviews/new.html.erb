@@ -1,0 +1,6 @@
+<h1>Add your review</h1>
+<%= simple_form_for ([@list, @review]) do |f| %>
+  <%= f.input :comment%>
+  <%= f.input :rating, :collection => %w(5 4 3 2 1)%>
+  <%= f.submit class: "btn" %>
+<%end%>

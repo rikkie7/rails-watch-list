@@ -1,0 +1,26 @@
+/* app/assets/stylesheets/application.css */
+.review_comment {
+  .required {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+
+  #review_comment {
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.review_rating {
+  .required {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+
+  #review_rating {
+    height: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}

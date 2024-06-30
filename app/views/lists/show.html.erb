@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-film"></i></span>
     <div class="d-flex">
-      <p class="me-5 align-items-center mb-0"><%=link_to "My List", lists_path, class: "text-decoration-none"%></p>
+      <p class="me-5 align-items-center mb-0"><%=link_to "My List", root_path, class: "text-decoration-none"%></p>
       <p class="align-items-center mb-0"><%=link_to "New List", lists_new_path, class: "text-decoration-none"%></p>
     </div>
   </div>
@@ -15,34 +15,34 @@
 <div class="container d-flex flex-row-reverse">
   <button type="button" class="mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add a movie
-</button>
+  </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New Movie</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <%= simple_form_for [@list, @bookmark] do |f| %>
-          <%= f.input :comment %>
-          <%= f.association :movie %>
-          <%= f.button :submit %>
-          <%end%>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Movie</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <%= simple_form_for [@list, @bookmark] do |f| %>
+            <%= f.input :comment %>
+            <%= f.association :movie %>
+            <%= f.button :submit %>
+            <%end%>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 
 <div class=" container">
   <div class="row">
     <% @list.movies. each do |movie| %>
-    <div class="card col-5 mx-4 px-0 my-3">
+    <div class="card col-5 mx-4 px-0 mt-3 mb-5 bg-light">
       <%= image_tag movie.poster_url, class: "img-crop"%>
       <div class="d-flex">
         <strong class="me-2"><%= movie.title%></strong>
@@ -55,5 +55,31 @@
       </p>
     </div>
     <%end%>
+  </div>
+
+  <div class="border-top">
+    <div class="row">
+      <div class="col-5 mx-4 px-0 mt-3 mb-5">
+        <h5>Reviews</h5>
+        <% @list.reviews.each do |review| %>
+          <div class="border-bottom mb-3 pb-3">
+            <%= "⭐️" * review.rating%>
+            <%= review.comment%>
+          </div>
+        <%end%>
+      </div>
+
+      <div class="border col-5 mx-4 px-0 mt-3 mb-5 py-3 bg-light">
+        <div class="container review-box">
+        <h5>Add your review</h5>
+        <%= simple_form_for ([@list, @review]) do |f| %>
+          <%= f.input :comment%>
+          <%= f.input :rating, :collection => %w(5 4 3 2 1)%>
+          <%= f.submit class: "btn" %>
+        <%end%>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
