@@ -26,8 +26,9 @@ movie["results"].each do |result|
 end
 
 
-List.create!(name: "Children", image_url: "https://i.guim.co.uk/img/static/sys-images/Film/Pix/pictures/2015/3/16/1426524496897/2009-Pixar-film-Up-010.jpg?width=620&quality=85&auto=format&fit=max&s=fb34ff8c61625a1306eb6ca7cca6e3fe")
-List.create!(name: "Girl Power", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa3OdGAMIBju7QNg7PRBPoCauVvdCEDIOpaw&s")
-List.create!(name: "Documentary", image_url: "https://media.cnn.com/api/v1/images/stellar/prod/221025150420-tease-national-geographic-azores.jpg?c=original")
-
 # Bookmark.create!(comment: "It is a very good movie!", movie_id: 65, list_id: 1)
+
+file = URI.open("https://i.natgeofe.com/n/e16c207c-c151-47ea-bbfd-85bafefc19ee/18-iconic-patagonia-torres-del-paine-national-park-chile_16x9.jpg?w=1200")
+list = List.new(name: "Documentary")
+list.photo.attach(io: file, filename: "documentary.png", content_type: "image/jpg")
+list.save!

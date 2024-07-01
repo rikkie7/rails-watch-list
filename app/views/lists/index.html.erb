@@ -21,8 +21,8 @@
   <div class="row">
     <% @lists.each do |list| %>
       <div class="cards col-4 mb-3" style="position:relative">
-        <%= image_tag list.image_url, alt: list.name, width: 400 %>
-        <p style="position:absolute; top:80px; left: 150px;"><%= link_to list.name, list_path(list), class: "text-decoration-none text-light" %></p>
+        <%= cl_image_tag list.photo.key, alt: list.name, width: 400, crop: :fill %>
+        <p class="center-text"><%= link_to list.name, list_path(list), class: "text-decoration-none text-light" %></p>
       </div>
     <% end %>
   </div>

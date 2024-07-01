@@ -8,7 +8,7 @@
   </div>
 </nav>
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path(@list.image_url) %>)">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @list.photo.key %>)">
   <%=@list.name%>
 </div>
 
@@ -83,3 +83,6 @@
     </div>
   </div>
 </div>
+
+
+<%= cl_image_tag("dxnyt0rw6cpm56yovsd9", width: 400, height: 300, crop: :fill) %>
